@@ -106,10 +106,6 @@ function signUp() {
         return false;
     }
 
-
-
-
-
     let user = new User(urname, email, age, password, 0);
     users.push(user);
 
@@ -117,8 +113,6 @@ function signUp() {
     return true;
 
 }
-
-console.log(users);
 
 
 
@@ -129,11 +123,31 @@ console.log(users);
 
 
 //         * If the user chooses to log in, here are the details they must enter:
-//             # Email:
-//             - Check if the email exists in our Database.
-            
-//             # Password:
-//             - Check if the entered password is associated with the previously entered email.
+function login() {
+    let email = prompt("Enter email:");
+    if (!email) {
+        alert("Email is required");
+        return
+    }
+
+    let user = users.find(u => u.email === email);
+
+    if (!user) {
+        alert("Email not found");
+        return false;
+    }
+
+    let password = prompt("Enter password:");
+    if (password !== user.password) {
+        alert("Incorrect password");
+        return false;
+    }
+
+    currentUser = user;
+    alert("Welcome " + user.name);
+    return true;
+}
+
 
 //         * If the user chooses to change the password:
 //             - They must enter their existing Email in the Database.
