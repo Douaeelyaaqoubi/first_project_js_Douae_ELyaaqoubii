@@ -55,13 +55,21 @@ function formatWord(x) {
 }
 
 function formatName(name) {
-    return name
-        .toLowerCase()
-        .split(" ")
-        .filter(w => w !== "")
-        .map(formatWord)
-        .join(" ");
+    let words = name.toLowerCase().split(" ");
+    let result = [];
+
+    for (let i = 0; i < words.length; i++) {
+        if (words[i] !== "") {
+            let word =
+                words[i][0].toUpperCase() +
+                words[i].slice(1);
+            result.push(word);
+        }
+    }
+
+    return result.join(" ");
 }
+
 
 function signUp() {
     
@@ -90,10 +98,27 @@ function signUp() {
         alert("Invalid password");
         return false;
     }
+    
+
+    let password_confirmed = prompt("Confirm password:");
+    if (password !== password_confirmed) {
+        alert("Passwords do not match");
+        return false;
+    }
+
+
+
+
+
+    let user = new User(urname, email, age, password, 0);
+    users.push(user);
+
+    alert("Account created successfully");
+    return true;
 
 }
 
-
+console.log(users);
 
 
 
