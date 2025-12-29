@@ -2,10 +2,39 @@
 // - Account Creation and Management:
 //     + Allow the user, via prompts, to choose between signing up, logging in, or changing the password.
 
-//     + If the user only writes "exit," they exit the current process, and the choice question is asked again.
-//         * If the user chooses to sign up, here are the details they must enter:
+// ?Fonction ////////////////////////////////////////////////////////////////////////////
+function formatWord(x) {
+    return x.charAt(0).toUpperCase() + x.slice(1).toLowerCase();
+}
+
+
+
+let choice = prompt("Choose: Sign Up, Login, Change Password or Exit")
+    while (choice.length != 0 ) {
+        if (choice.formatWord() === "Exit") {
+            exit
+        };
+        else if (choice.formatWord() === "Sign Up") {
+            signUp()
+        };
+        else if (choice.formatWord() === "Login") {
+            login()
+        };
+        else if (choice.formatWord() === "Change password") {
+            changePassword()
+        };
+        else (
+            alert(" You must choose only one of these options.")
+        )
+    }
+
+
+
+
+console.log(formatWord(choice));
+
 //             # Name (Full):
-//             - Check for leading or trailing spaces.
+//             -Check for leading or trailing spaces. 
 //             - The first letter should be capitalized.
 //             - After each space, the first letter should remain capitalized.
 //             - Check that all other characters are in lowercase.
