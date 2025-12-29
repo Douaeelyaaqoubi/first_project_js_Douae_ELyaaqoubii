@@ -160,6 +160,19 @@ function changePassword() {
 
 
 //         * After the user logs in, display the amount they have in their bank (user's choice) and offer them services:
+
+let choicee = prompt(" chose one : 1- Withdraw 2- Deposit 3- Loan 4- Invest 5- History6- Logout");
+function bankMenu() {
+        
+        if (choicee === "1") {
+        let amount = Number(prompt("Withdraw amount:"));
+        if (amount <= currentUser.balance) {
+            currentUser.balance -= amount;
+            currentUser.history.push("Withdraw - ${amount}DH");
+        }
+        
+        
+}}
 //             # Logout:
 //             - If the user chooses this option, they are logged out and offered the option, as at the beginning, to sign up, log in, or change the password.
             
