@@ -89,7 +89,11 @@ function signUp() {
     // reverse to lowercase
     email = email.toLowerCase().trim(); 
 
-    
+    let age = prompt("Enter age:");
+    if (!age || isNaN(age) || age.length >= 3 ) {
+        alert("Invalid age");
+        return false;
+    }
 }
 
 
