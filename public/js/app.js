@@ -116,13 +116,7 @@ function signUp() {
 
 
 
-
-
-
-
-
-
-//         * If the user chooses to log in, here are the details they must enter:
+//  * If the user chooses to log in, here are the details they must enter:
 function login() {
     let email = prompt("Enter email:");
     if (!email) {
@@ -151,6 +145,19 @@ function login() {
 
 //         * If the user chooses to change the password:
 //             - They must enter their existing Email in the Database.
+function changePassword() {
+    let newPassword = prompt("Enter new password:");
+    if (!newPassword || newPassword.includes(" ") || newPassword.length < 7 || !["@","#","-","+","*","/"].some(s => newPassword.includes(s))) {
+        return alert("Invalid new password");
+    }
+
+    let confirmPassword = prompt("Confirm new password:");
+    if (newPassword !== confirmPassword) return alert("Passwords do not match");
+
+    user.password = newPassword;
+    alert("Password changed successfully!");
+}
+
 
 //         * After the user logs in, display the amount they have in their bank (user's choice) and offer them services:
 //             # Logout:
