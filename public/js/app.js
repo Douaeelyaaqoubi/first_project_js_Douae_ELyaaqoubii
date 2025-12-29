@@ -178,7 +178,12 @@ function bankMenu() {
             currentUser.history.push(`Deposit +${amount} DH`);
         }
         }
-        
+        if (choice === "3") {
+        let loan = currentUser.balance * 0.2;
+        currentUser.balance += loan;
+        currentUser.loan += loan;
+        currentUser.history.push(`Loan taken ${loan} DH`);
+        }
 }}
 //             # Logout:
 //             - If the user chooses this option, they are logged out and offered the option, as at the beginning, to sign up, log in, or change the password.
