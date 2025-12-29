@@ -2,13 +2,33 @@
 // - Account Creation and Management:
 //     + Allow the user, via prompts, to choose between signing up, logging in, or changing the password.
 
+
+    let users = [];
+    let currentUser = null;
+    class User {
+    constructor(name, email, age, password, balance) {
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.password = password;
+        this.balance = balance;
+        this.loan = 0;
+        this.investment = 0;
+        this.history = [];
+    }
+    }
+
+
 let choice = prompt("Choose:Sign Up, Login, Change Password, exit" )
 
 while (choice) {
     if (formatName(choice) === "Exit") {
         break;
-    } else if (formatName(choice) === "Sign Up") {
-        signUp();
+    } 
+    else if (formatName(choice) === "Sign Up") {
+        while (signUp() === false) {
+            signUp()
+        }
     } else if (formatName(choice) === "Login") {
         login();
     } else if (formatName(choice) === "Change Password") {
@@ -19,6 +39,7 @@ while (choice) {
     
     choice = prompt("Choose: Sign Up, Login, Change Password, Exit");
 }
+
 
 alert(formatName(choice));
 
@@ -33,6 +54,9 @@ alert(formatName(choice));
 
 
 // ?Fonction ////////////////////////////////////////////////////////////////////////////
+// trim : remov espace
+// split : kt9sm
+// some : ktserchi 
 
 function formatWord(x) {
     return x.charAt(0).toUpperCase() + x.slice(1).toLowerCase();
@@ -47,15 +71,29 @@ function formatName(name) {
         .join(" ");
 }
 
-
 function signUp() {
+    
     let urname = prompt("Enter full name:");
     if ( !urname || urname.trim().length < 5 || ([...urname].some( c => !((c >= "A" && c <= "Z") || (c >= "a" && c <= "z") || c === " " )))  ){
         alert("Invalid name , Name must be at least 5 letters and contain only letters and spaces.");
     } else {
         alert("Name accepted: " + formatName(urname));
     }
+    urname = formatName(urname);
+
+    let email = prompt("Enter email:");
+    if (!email || email.includes(" ") || email.trim().length < 10 || email.split("@").length !== 2 || users.some(u => u.email === email.toLowerCase())) {
+        alert("Invalid or existing email");
+        return false;
+    }
+    // reverse to lowercase
+    email = email.toLowerCase().trim(); 
+
+    
 }
+
+
+
 
 
 
@@ -67,6 +105,10 @@ function signUp() {
 //             - Do not save the Email if it has fewer than 10 characters (excluding spaces).
 //             - Do not save the Email if it does not contain exactly one "@" symbol.
 //             - Ensure the email is unique.
+
+
+
+
 
 
 //             # Age:
