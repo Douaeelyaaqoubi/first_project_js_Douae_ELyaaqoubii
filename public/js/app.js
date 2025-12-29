@@ -2,44 +2,52 @@
 // - Account Creation and Management:
 //     + Allow the user, via prompts, to choose between signing up, logging in, or changing the password.
 
-// ?Fonction ////////////////////////////////////////////////////////////////////////////
-function formatWord(x) {
-    return x.charAt(0).toUpperCase() + x.slice(1).toLowerCase();
+let choice = prompt("Choose:Sign Up, Login, Change Password, exit" )
+
+while (choice) {
+    if (formatName(choice) === "Exit") {
+        break;
+    } else if (formatName(choice) === "Sign Up") {
+        signUp();
+    } else if (formatName(choice) === "Login") {
+        login();
+    } else if (formatName(choice) === "Change Password") {
+        changePassword();
+    } else {
+        alert("You must choose only one of these options.")
+    }
+    
+    choice = prompt("Choose: Sign Up, Login, Change Password, Exit");
 }
 
-
-
-let choice = prompt("Choose: Sign Up, Login, Change Password or Exit")
-    while (choice.length != 0 ) {
-        if (choice.formatWord() === "Exit") {
-            exit
-        };
-        else if (choice.formatWord() === "Sign Up") {
-            signUp()
-        };
-        else if (choice.formatWord() === "Login") {
-            login()
-        };
-        else if (choice.formatWord() === "Change password") {
-            changePassword()
-        };
-        else (
-            alert(" You must choose only one of these options.")
-        )
-    }
-
-
-
-
-console.log(formatWord(choice));
-
-//             # Name (Full):
+// alert(formatName(choice));
+// # Name (Full):
 //             -Check for leading or trailing spaces. 
 //             - The first letter should be capitalized.
 //             - After each space, the first letter should remain capitalized.
 //             - Check that all other characters are in lowercase.
 //             - Do not save the Name if it has less than 5 characters (excluding spaces).
 //             - Do not save the Name if it contains numbers, "@", or similar special characters.
+
+
+
+// ?Fonction ////////////////////////////////////////////////////////////////////////////
+
+function formatWord(x) {
+    return x.charAt(0).toUpperCase() + x.slice(1).toLowerCase();
+}
+
+function formatName(name) {
+    return name
+        .toLowerCase()
+        .split(" ")
+        .filter(w => w !== "")
+        .map(formatWord)
+        .join(" ");
+}
+
+
+
 
 //             # Email:
 //             - Check for leading or trailing spaces.
@@ -48,6 +56,7 @@ console.log(formatWord(choice));
 //             - Do not save the Email if it has fewer than 10 characters (excluding spaces).
 //             - Do not save the Email if it does not contain exactly one "@" symbol.
 //             - Ensure the email is unique.
+
 
 //             # Age:
 //             - Check for leading, trailing, or middle spaces.
