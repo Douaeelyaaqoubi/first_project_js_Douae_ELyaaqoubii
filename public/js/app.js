@@ -170,7 +170,14 @@ function bankMenu() {
             currentUser.balance -= amount;
             currentUser.history.push("Withdraw - ${amount}DH");
         }
-        
+
+        if (choice === "2") {
+        let amount = Number(prompt("Deposit amount (max 1000):"));
+        if (amount <= 1000) {
+            currentUser.balance += amount;
+            currentUser.history.push(`Deposit +${amount} DH`);
+        }
+        }
         
 }}
 //             # Logout:
