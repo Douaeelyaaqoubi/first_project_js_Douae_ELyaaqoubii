@@ -41,16 +41,8 @@ while (choice) {
 }
 
 
-alert(formatName(choice));
 
-// # Name (Full):
-//             -Check for leading or trailing spaces. 
-//             - The first letter should be capitalized.
-//             - After each space, the first letter should remain capitalized.
-//             - Check that all other characters are in lowercase.
-//             - Do not save the Name if it has less than 5 characters (excluding spaces).
-//             - Do not save the Name if it contains numbers, "@", or similar special characters.
-
+// # Name (Full) & email &  age & password & password_confirmed:
 
 
 // ?Fonction ////////////////////////////////////////////////////////////////////////////
@@ -86,14 +78,19 @@ function signUp() {
         alert("Invalid or existing email");
         return false;
     }
-    // reverse to lowercase
-    email = email.toLowerCase().trim(); 
 
     let age = prompt("Enter age:");
     if (!age || isNaN(age) || age.length >= 3 ) {
         alert("Invalid age");
         return false;
     }
+
+    let password = prompt("Enter password:");
+    if (!password || password.includes(" ") || password.length < 7 || !["@","#","-","+","*","/"].some(s => password.includes(s))){
+        alert("Invalid password");
+        return false;
+    }
+
 }
 
 
@@ -102,32 +99,9 @@ function signUp() {
 
 
 
-//             # Email:
-//             - Check for leading or trailing spaces.
-//             - Convert all letters to lowercase.
-//             - Do not save the Email if it has spaces in the middle.
-//             - Do not save the Email if it has fewer than 10 characters (excluding spaces).
-//             - Do not save the Email if it does not contain exactly one "@" symbol.
-//             - Ensure the email is unique.
 
 
 
-
-
-
-//             # Age:
-//             - Check for leading, trailing, or middle spaces.
-//             - Verify that only digits are entered.
-//             - Do not save the Age if it has 0 characters, or if it has 3 characters or more.
-
-//             # Password:
-//             - Check for leading or trailing spaces.
-//             - Do not save the Password if it has spaces in the middle.
-//             - Require at least one special character from the set: ["@", "#", "-", "+", "*", "/"].
-//             - Require at least 7 characters to confirm the password.
-
-//             # Password_confirmed:
-//             - The user must re-enter their exact password; otherwise, they are blocked.
 
 //         * If the user chooses to log in, here are the details they must enter:
 //             # Email:
