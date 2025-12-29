@@ -20,7 +20,8 @@ while (choice) {
     choice = prompt("Choose: Sign Up, Login, Change Password, Exit");
 }
 
-// alert(formatName(choice));
+alert(formatName(choice));
+
 // # Name (Full):
 //             -Check for leading or trailing spaces. 
 //             - The first letter should be capitalized.
@@ -44,6 +45,16 @@ function formatName(name) {
         .filter(w => w !== "")
         .map(formatWord)
         .join(" ");
+}
+
+
+function signUp() {
+    let urname = prompt("Enter full name:");
+    if ( !urname || urname.trim().length < 5 || ([...urname].some( c => !((c >= "A" && c <= "Z") || (c >= "a" && c <= "z") || c === " " )))  ){
+        alert("Invalid name , Name must be at least 5 letters and contain only letters and spaces.");
+    } else {
+        alert("Name accepted: " + formatName(urname));
+    }
 }
 
 
