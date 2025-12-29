@@ -165,14 +165,14 @@ let choicee = prompt(" chose one : 1- Withdraw 2- Deposit 3- Loan 4- Invest 5- H
 function bankMenu() {
         
         if (choicee === "1") {
-        let amount = Number(prompt("Withdraw amount:"));
+        let amount = Number(prompt(`Withdraw amount:`));
         if (amount <= currentUser.balance) {
             currentUser.balance -= amount;
-            currentUser.history.push("Withdraw - ${amount}DH");
+            currentUser.history.push(`Withdraw - ${amount}DH`);
         }
 
         if (choice === "2") {
-        let amount = Number(prompt("Deposit amount (max 1000):"));
+        let amount = Number(prompt(`Deposit amount (max 1000):`));
         if (amount <= 1000) {
             currentUser.balance += amount;
             currentUser.history.push(`Deposit +${amount} DH`);
@@ -182,7 +182,7 @@ function bankMenu() {
         let loan = currentUser.balance * 0.2;
         currentUser.balance += loan;
         currentUser.loan += loan;
-        currentUser.history.push(`Loan taken ${loan} DH`);
+        currentUser.history.push(`Loan  ${loan} DH`);
         }
 }}
 //             # Logout:
